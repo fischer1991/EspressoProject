@@ -1,18 +1,24 @@
 package com.freenow.android_demo.FreeNowChallenge;
 
+import android.Manifest;
 import android.support.test.rule.ActivityTestRule;
 import com.freenow.android_demo.FreeNowChallenge.robots.robots;
 import com.freenow.android_demo.activities.MainActivity;
+import com.schibsted.spain.barista.interaction.PermissionGranter;
+
 import org.junit.Rule;
 import org.junit.Test;
 
 public class TestCases {
+
+
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
     public void ValidateLoginFields(){
+        PermissionGranter.allowPermissionsIfNeeded(Manifest.permission.LOCATION_HARDWARE);
         new robots()
             .checkUsernameField()
             .checkPasswordField()
